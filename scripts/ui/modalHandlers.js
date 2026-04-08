@@ -1,5 +1,7 @@
 import { addNewTask } from "../tasks/taskManager.js";
 
+let currentEditTaskId = null;
+
 export function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
   const closeBtn = document.getElementById("close-modal-btn");
@@ -31,8 +33,13 @@ export function setupNewTaskModalHandler() {
 
 export function openTaskModal(task) {
   const modal = document.getElementById("task-modal");
+
+  // Sets currentEditTaskId to the task being edited
+  currentEditTaskId = task.id;
+
   document.getElementById("task-title").value = task.title;
   document.getElementById("task-desc").value = task.description;
   document.getElementById("task-status").value = task.status;
+
   modal.showModal();
 }
