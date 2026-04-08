@@ -1,4 +1,7 @@
-import { loadTasksFromStorage } from "./utils/localStorage.js";
+import {
+  loadTasksFromStorage,
+  saveTasksToStorage,
+} from "./utils/localStorage.js";
 import { clearExistingTasks, renderTasks } from "./ui/render.js";
 import {
   setupModalCloseHandler,
@@ -20,6 +23,8 @@ async function initTaskBoard() {
     showLoading();
 
     const tasks = await fetchTasksFromAPI();
+
+    saveTasksToStorage(tasks);
 
     clearExistingTasks();
     renderTasks(tasks);
