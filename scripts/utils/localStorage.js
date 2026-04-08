@@ -1,7 +1,5 @@
-import { initialTasks } from "../ui/initialData.js";
-
 /**
- * Loads tasks from localStorage or initializes with initialTasks.
+ * Loads tasks from localStorage and returns an array of task objects
  * @returns {Array<Object>} The array of tasks.
  */
 export function loadTasksFromStorage() {
@@ -14,9 +12,7 @@ export function loadTasksFromStorage() {
     }
   }
 
-  // If no tasks in storage, initialize with initialTasks
-  localStorage.setItem("tasks", JSON.stringify(initialTasks));
-  return initialTasks;
+  return [];
 }
 
 /**
