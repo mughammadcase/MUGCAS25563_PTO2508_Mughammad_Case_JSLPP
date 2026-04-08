@@ -20,11 +20,14 @@ function showError() {
 
 async function initTaskBoard() {
   try {
-    showLoading();
+    let tasks = loadTasksFromStorage();
 
-    const tasks = await fetchTasksFromAPI();
-
-    saveTasksToStorage(tasks);
+    // If no tasks in storage, then fetch from API and save to storage
+    if (!tasks.length) {
+      showLoading();
+      tasks = await fetchTasksFromAPI();
+      saveTasksToStorage(tasks);
+    }
 
     clearExistingTasks();
     renderTasks(tasks);
