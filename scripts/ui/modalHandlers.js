@@ -1,6 +1,7 @@
 import { addNewTask } from "../tasks/taskManager.js";
 import { updateTask } from "../tasks/taskManager.js";
 import { loadTasksFromStorage } from "../utils/localStorage.js";
+import { deleteTask } from "../tasks/taskManager.js";
 
 let currentEditTaskId = null;
 
@@ -72,4 +73,24 @@ export function setupEditTaskHandler() {
   const form = document.getElementById("task-form");
 
   form.addEventListener("submit", handleEditSubmit);
+}
+
+function handleDeleteTask() {
+  if (currentEditTaskId === null) return;
+
+  const confirmDelete = confirm("Are you sure you want to delete this task?");
+
+  if (!confirmDelete) return;
+
+  deleteTask(currentEditTaskId);
+
+  document.getElementById("task-modal").close();
+
+  currentEditTaskId = null;
+}
+
+export function setupDeleteTaskHandler() {
+  const deleteBtn = document.getElementById("delete-task-btn");
+
+  deleteBtn.addEventListener("click", handleDeleteTask);
 }
