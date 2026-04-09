@@ -1,4 +1,6 @@
 import { addNewTask } from "../tasks/taskManager.js";
+import { updateTask } from "../tasks/taskManager.js";
+import { loadTasksFromStorage } from "../utils/localStorage.js";
 
 let currentEditTaskId = null;
 
@@ -42,4 +44,32 @@ export function openTaskModal(task) {
   document.getElementById("task-status").value = task.status;
 
   modal.showModal();
+}
+
+function handleEditSubmit(e) {
+  e.preventDefault();
+
+  const tasks = loadTasksFromStorage();
+
+  // Finds the existing task being edited using currentEditTaskId
+  const existingTask = tasks.find((t) => t.id === currentEditTaskId);
+
+  if (!existingTask) return;
+
+  const updatedTask = {
+    ...existingTask,
+    title: document.getElementById("task-title").value.trim(),
+    description: document.getElementById("task-desc").value.trim(),
+    status: document.getElementById("task-status").value,
+  };
+
+  updateTask(updatedTask);
+
+  document.getElementById("task-modal").close();
+}
+
+export function setupEditTaskHandler() {
+  const form = document.getElementById("task-form");
+
+  form.addEventListener("submit", handleEditSubmit);
 }

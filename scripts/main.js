@@ -8,6 +8,7 @@ import {
   setupNewTaskModalHandler,
 } from "./ui/modalHandlers.js";
 import { fetchTasksFromAPI } from "./api/api.js";
+import { setupEditTaskHandler } from "./ui/modalHandlers.js";
 
 function showLoading() {
   const container = document.querySelector(".card-column-main");
@@ -34,8 +35,10 @@ async function initTaskBoard() {
 
     document.querySelector(".card-column-main p")?.remove();
 
+    // Event handlers
     setupModalCloseHandler();
     setupNewTaskModalHandler();
+    setupEditTaskHandler();
   } catch (error) {
     console.error(error);
     showError();
