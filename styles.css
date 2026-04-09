@@ -361,9 +361,23 @@ form select {
   flex-grow: 1; /* Allows the button to grow and fill the space */
   margin: 5px 0; /* Optional: adds a margin between buttons */
 }
+.button-group {
+  display: flex;
+  gap: 10px;
+}
 
-.primary-btn {
+.save-btn {
   background-color: var(--primary-btn-color);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #ea5555;
   color: white;
   border: none;
   border-radius: 30px;
@@ -488,5 +502,9 @@ textarea {
     padding-right: 14px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  .button-group {
+    flex-direction: column;
   }
 }
