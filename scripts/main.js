@@ -15,12 +15,21 @@ import { initSidebarToggle } from "./ui/sidebarManager.js";
 
 function showLoading() {
   const container = document.querySelector(".card-column-main");
-  container.insertAdjacentHTML("afterbegin", "<p>Loading tasks...</p>");
+
+  // In case function is called multiple times, avoids adding multiple loading messages
+  if (!container.querySelector(".loading-msg")) {
+    container.insertAdjacentHTML(
+      "beforeend", // Loading message is added at end of tasks column
+      `<p class="loading-msg">Loading tasks...</p>`,
+    );
+  }
 }
 
 function showError() {
   alert("Fetching tasks failed. Please try again.");
 }
+
+document.querySelector(".loading-msg")?.remove();
 
 async function initTaskBoard() {
   try {
