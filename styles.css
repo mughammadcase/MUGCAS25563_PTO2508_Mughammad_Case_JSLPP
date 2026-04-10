@@ -316,10 +316,15 @@ header {
   color: var(--primary-font-color);
   border-radius: 12px;
   box-shadow: var(--primary-box-shadow);
-  cursor: pointer; /* Indicate it's clickable */
+  cursor: pointer;
   margin-bottom: 20px;
   font-size: 0.9375rem;
   font-weight: bold;
+}
+
+.priority-indicator {
+  margin-left: auto;
+  padding-right: 15px;
 }
 
 /* ===============
