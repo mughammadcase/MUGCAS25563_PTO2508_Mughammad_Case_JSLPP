@@ -10,6 +10,7 @@ import {
 import { fetchTasksFromAPI } from "./api/api.js";
 import { setupEditTaskHandler } from "./ui/modalHandlers.js";
 import { setupDeleteTaskHandler } from "./ui/modalHandlers.js";
+import { initThemeToggle } from "./ui/toggle-theme.js";
 
 function showLoading() {
   const container = document.querySelector(".card-column-main");
@@ -22,6 +23,8 @@ function showError() {
 
 async function initTaskBoard() {
   try {
+    initThemeToggle();
+
     let tasks = loadTasksFromStorage();
 
     // If no tasks in storage, then fetch from API and save to storage
@@ -37,6 +40,7 @@ async function initTaskBoard() {
     document.querySelector(".card-column-main p")?.remove();
 
     // Event handlers
+
     setupModalCloseHandler();
     setupNewTaskModalHandler();
     setupEditTaskHandler();
