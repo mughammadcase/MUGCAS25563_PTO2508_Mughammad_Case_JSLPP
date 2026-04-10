@@ -55,9 +55,11 @@ body.dark-mode select {
   display: flex;
   flex-direction: column;
   background-color: var(--primary-color);
-  border-right: 1px solid #e4ebfa; /* Light divider */
+  border-right: 1px solid #e4ebfa;
   width: var(--sidebar-width);
   height: 100vh;
+
+  transition: transform 0.5s ease;
 }
 
 #side-logo-div {
@@ -86,22 +88,80 @@ h4 {
   letter-spacing: 0.125rem; /* Makes heading more spaced */
 }
 
+.side-bar.hidden {
+  transform: translateX(-100%);
+}
+
+.side-bar.hidden {
+  transform: translateX(-100%);
+  width: 0;
+  overflow: hidden;
+}
+
+/* Hide Sidebar Button */
+
+.hide-sidebar-btn {
+  font-family: inherit;
+  margin: 20px 20px 20px 0;
+  padding: 16px 20px;
+
+  border: none;
+  border-radius: 0 100px 100px 0;
+
+  background-color: var(--primary-btn-color);
+  color: var(--primary-font-color);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+
+  cursor: pointer;
+}
+
+/* Show Sidebar Button*/
+
+.show-sidebar-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+
+  background-color: var(--primary-btn-color);
+  color: #fff;
+
+  border: none;
+  border-radius: 0 100px 100px 0;
+
+  width: 60px;
+  height: 48px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.show-sidebar-btn.visible {
+  display: block;
+}
+
 .board-btn {
   font-family: inherit;
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between icon and text */
+  gap: 10px;
   background-color: var(--primary-btn-color);
   color: #fff;
   border: none;
-  border-radius: 0 100px 100px 0; /* Pill shape only on right side */
+  border-radius: 0 100px 100px 0;
   height: 48px;
   width: 276px;
   padding: 28px 12px 28px 50px;
   font-size: 0.9375rem;
   font-weight: bold;
   cursor: pointer;
-  overflow: hidden; /* Prevents overflowed text/icons from showing */
+  overflow: hidden;
 }
 
 /* ===============

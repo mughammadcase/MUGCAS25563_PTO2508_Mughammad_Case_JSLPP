@@ -11,6 +11,7 @@ import { fetchTasksFromAPI } from "./api/api.js";
 import { setupEditTaskHandler } from "./ui/modalHandlers.js";
 import { setupDeleteTaskHandler } from "./ui/modalHandlers.js";
 import { initThemeToggle } from "./ui/toggle-theme.js";
+import { initSidebarToggle } from "./ui/sidebarManager.js";
 
 function showLoading() {
   const container = document.querySelector(".card-column-main");
@@ -24,6 +25,7 @@ function showError() {
 async function initTaskBoard() {
   try {
     initThemeToggle();
+    initSidebarToggle();
 
     let tasks = loadTasksFromStorage();
 

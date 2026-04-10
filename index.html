@@ -40,7 +40,19 @@
 
         <span>🌙</span>
       </div>
+
+      <!-- Hide Sidebar Button-->
+
+      <button id="hide-sidebar-btn" class="hide-sidebar-btn">
+        <span>🚫</span>
+        <span>Hide Sidebar</span>
+      </button>
     </nav>
+
+    <!-- Show Sidebar Button-->
+    <button id="show-sidebar-btn" class="show-sidebar-btn">
+      <span>👀</span>
+    </button>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
     <div id="layout">
@@ -94,6 +106,7 @@
     </div>
 
     <!-- Modal: Displays each tasks details when the task is clicked -->
+
     <dialog id="task-modal">
       <form method="dialog" id="task-form">
         <div class="modal-header">
