@@ -12,6 +12,7 @@ import { setupEditTaskHandler } from "./ui/modalHandlers.js";
 import { setupDeleteTaskHandler } from "./ui/modalHandlers.js";
 import { initThemeToggle } from "./ui/toggle-theme.js";
 import { initSidebarToggle } from "./ui/sidebarManager.js";
+import { updateTaskCounter } from "./ui/taskCounter.js";
 
 function showLoading() {
   const container = document.querySelector(".card-column-main");
@@ -47,6 +48,7 @@ async function initTaskBoard() {
 
     clearExistingTasks();
     renderTasks(tasks);
+    updateTaskCounter(tasks);
 
     document.querySelector(".card-column-main p")?.remove();
 

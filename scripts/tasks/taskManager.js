@@ -4,6 +4,7 @@ import {
 } from "../utils/localStorage.js";
 import { clearExistingTasks, renderTasks } from "../ui/render.js";
 import { resetForm } from "./formUtils.js";
+import { updateTaskCounter } from "../ui/taskCounter.js";
 
 export function addNewTask() {
   const title = document.getElementById("title-input").value.trim();
@@ -14,6 +15,7 @@ export function addNewTask() {
   if (!title) return;
 
   const tasks = loadTasksFromStorage();
+
   const newTask = {
     id: tasks.length ? Math.max(...tasks.map((t) => t.id)) + 1 : 1,
     title,
@@ -26,6 +28,8 @@ export function addNewTask() {
 
   clearExistingTasks();
   renderTasks(updatedTasks);
+  updateTaskCounter(updatedTasks);
+
   resetForm();
   overlay.close();
 }
@@ -41,6 +45,7 @@ export function updateTask(updatedTask) {
 
   clearExistingTasks();
   renderTasks(updatedTasks);
+  updateTaskCounter(updatedTasks);
 }
 
 export function deleteTask(taskId) {
@@ -52,4 +57,5 @@ export function deleteTask(taskId) {
 
   clearExistingTasks();
   renderTasks(updatedTasks);
+  updateTaskCounter(updatedTasks);
 }
