@@ -1,25 +1,35 @@
 export function initThemeToggle() {
-  const toggleBtn = document.getElementById("theme-toggle-btn");
+  const toggleBtns = document.querySelectorAll(".theme-toggle"); // 👈 key change
   const body = document.body;
   const logo = document.getElementById("logo");
 
   const savedTheme = localStorage.getItem("theme");
 
+  // Apply saved theme on load
   if (savedTheme === "dark") {
     body.classList.add("dark-mode");
     logo.src = "./assets/logo-dark.svg";
+    toggleBtns.forEach((btn) => btn.classList.add("active")); // sync UI
   }
 
-  toggleBtn.addEventListener("click", () => {
-    const isDark = body.classList.toggle("dark-mode");
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isDark = body.classList.toggle("dark-mode");
 
-    // Save theme to localStorage
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+      // Save theme to localStorage
+      localStorage.setItem("theme", isDark ? "dark" : "light");
 
-    if (isDark) {
-      logo.src = "./assets/logo-dark.svg";
-    } else {
-      logo.src = "./assets/logo-light.svg";
-    }
+      // Update logos
+      if (isDark) {
+        logo.src = "./assets/logo-dark.svg";
+      } else {
+        logo.src = "./assets/logo-light.svg";
+      }
+
+      // 👇 sync ALL toggles
+      toggleBtns.forEach((toggle) => {
+        toggle.classList.toggle("active", isDark);
+      });
+    });
   });
 }
