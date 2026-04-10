@@ -15,3 +15,24 @@ export function initSidebarToggle() {
     showBtn.classList.remove("visible");
   });
 }
+
+const mobileMenu = document.getElementById("mobile-menu-overlay");
+const mobileCloseBtn = document.getElementById("mobile-menu-close");
+const mobileLogo = document.querySelector(".logo-mobile");
+
+// Open menu
+mobileLogo.addEventListener("click", () => {
+  mobileMenu.classList.add("active");
+});
+
+// Close menu (X button)
+mobileCloseBtn.addEventListener("click", () => {
+  mobileMenu.classList.remove("active");
+});
+
+// Close when clicking outside
+mobileMenu.addEventListener("click", (e) => {
+  if (e.target === mobileMenu) {
+    mobileMenu.classList.remove("active");
+  }
+});

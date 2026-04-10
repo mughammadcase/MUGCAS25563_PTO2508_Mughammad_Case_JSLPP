@@ -627,3 +627,65 @@ textarea {
     flex-direction: column;
   }
 }
+
+/* ========================
+   Mobile Menu Overlay
+======================== */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-top: 80px;
+  z-index: 20;
+}
+
+.mobile-menu-overlay.active {
+  display: flex;
+}
+
+/* ========================
+   Mobile Menu Box
+======================== */
+.mobile-menu {
+  width: 90%;
+  max-width: 350px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ea5555;
+  cursor: pointer;
+}
+
+/* Fix board button spacing */
+.mobile-menu .board-btn {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 50px;
+}
+
+/* Theme container spacing */
+.mobile-menu .theme-toggle-container {
+  border-radius: 8px;
+}
