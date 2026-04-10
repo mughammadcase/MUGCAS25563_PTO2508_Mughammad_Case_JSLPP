@@ -43,17 +43,18 @@ export function openTaskModal(task) {
   document.getElementById("task-title").value = task.title;
   document.getElementById("task-desc").value = task.description;
   document.getElementById("task-status").value = task.status;
+  document.getElementById("task-priority").value = task.priority || "low";
 
   modal.showModal();
 }
 
 function handleEditSubmit(e) {
-  e.preventDefault();
+  e.preventDefault(); // e meaning event object, prevents default form submit/page reload
 
   const tasks = loadTasksFromStorage();
 
   // Finds the existing task being edited using currentEditTaskId
-  const existingTask = tasks.find((t) => t.id === currentEditTaskId);
+  const existingTask = tasks.find((t) => t.id === currentEditTaskId); // t meaning task
 
   if (!existingTask) return;
 
@@ -62,6 +63,7 @@ function handleEditSubmit(e) {
     title: document.getElementById("task-title").value.trim(),
     description: document.getElementById("task-desc").value.trim(),
     status: document.getElementById("task-status").value,
+    priority: document.getElementById("task-priority").value,
   };
 
   updateTask(updatedTask);
