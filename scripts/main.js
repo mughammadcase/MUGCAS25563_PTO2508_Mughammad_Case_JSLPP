@@ -10,7 +10,7 @@ import {
 import { fetchTasksFromAPI } from "./api/api.js";
 import { setupEditTaskHandler } from "./ui/modalHandlers.js";
 import { setupDeleteTaskHandler } from "./ui/modalHandlers.js";
-import { initThemeToggle } from "./ui/toggle-theme.js";
+import { initThemeToggle } from "./ui/toggleTheme.js";
 import { initSidebarToggle } from "./ui/sidebarManager.js";
 import { updateTaskCounter } from "./ui/taskCounter.js";
 
@@ -43,8 +43,6 @@ function removeLoading() {
 function showError() {
   alert("Failed to load tasks. Please refresh the page and try again.");
 }
-
-document.querySelector(".loading-msg")?.remove();
 
 /**
  * Initialize the task board by loading tasks from localStorage or API, rendering them, and setting up event handlers

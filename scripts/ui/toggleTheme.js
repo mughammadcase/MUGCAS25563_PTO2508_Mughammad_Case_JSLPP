@@ -2,7 +2,7 @@
  * Initializes the theme toggle functionality, allowing theme to switch between light and dark modes
  */
 export function initThemeToggle() {
-  const toggleBtns = document.querySelectorAll(".theme-toggle"); // 👈 key change
+  const toggleBtns = document.querySelectorAll(".theme-toggle");
   const body = document.body;
   const logo = document.getElementById("logo");
 
@@ -12,7 +12,7 @@ export function initThemeToggle() {
   if (savedTheme === "dark") {
     body.classList.add("dark-mode");
     logo.src = "./assets/logo-dark.svg";
-    toggleBtns.forEach((btn) => btn.classList.add("active")); // sync UI
+    toggleBtns.forEach((btn) => btn.classList.add("active"));
   }
 
   toggleBtns.forEach((btn) => {

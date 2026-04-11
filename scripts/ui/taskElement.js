@@ -31,4 +31,6 @@ export function createTaskElement(task) {
   taskDiv.addEventListener("click", () => {
     openTaskModal(task);
   });
+
+  return taskDiv;
 }
