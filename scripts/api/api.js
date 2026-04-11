@@ -17,5 +17,6 @@ export async function fetchTasksFromAPI() {
     title: item.title,
     description: item.description,
     status: item.completed ? "done" : "todo",
+    priority: "low",
   }));
 }

@@ -17,13 +17,18 @@ import { updateTaskCounter } from "./ui/taskCounter.js";
 function showLoading() {
   const container = document.querySelector(".card-column-main");
 
-  // In case function is called multiple times, avoids adding multiple loading messages
-  if (!container.querySelector(".loading-msg")) {
-    container.insertAdjacentHTML(
-      "beforeend", // Loading message is added at end of tasks column
-      `<p class="loading-msg">Loading tasks...</p>`,
-    );
+  // Prevent duplicates
+  if (!document.querySelector(".loading-msg")) {
+    const loadingEl = document.createElement("p");
+    loadingEl.className = "loading-msg";
+    loadingEl.textContent = "Loading tasks...";
+    container.appendChild(loadingEl);
   }
+}
+
+function removeLoading() {
+  const loadingEl = document.querySelector(".loading-msg");
+  if (loadingEl) loadingEl.remove();
 }
 
 function showError() {
@@ -50,10 +55,9 @@ async function initTaskBoard() {
     renderTasks(tasks);
     updateTaskCounter(tasks);
 
-    document.querySelector(".card-column-main p")?.remove();
+    removeLoading();
 
     // Event handlers
-
     setupModalCloseHandler();
     setupNewTaskModalHandler();
     setupEditTaskHandler();
