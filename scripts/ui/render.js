@@ -1,4 +1,5 @@
 import { createTaskElement } from "./taskElement.js";
+import { sortTasksByPriority } from "./prioritySorter.js";
 
 /**
  * Finds the task container element based on task status.
@@ -21,11 +22,30 @@ export function clearExistingTasks() {
  * Renders tasks to their appropriate columns.
  */
 export function renderTasks(tasks) {
+  const groupedTasks = {
+    todo: [],
+    doing: [],
+    done: [],
+  };
+
+  // Group tasks by status
   tasks.forEach((task) => {
-    const container = getTaskContainerByStatus(task.status);
-    if (container) {
+    if (groupedTasks[task.status]) {
+      groupedTasks[task.status].push(task);
+    }
+  });
+
+  // Sort each group by priority and render
+  Object.keys(groupedTasks).forEach((status) => {
+    const container = getTaskContainerByStatus(status);
+
+    if (!container) return;
+
+    const sortedTasks = sortTasksByPriority(groupedTasks[status]);
+
+    sortedTasks.forEach((task) => {
       const taskElement = createTaskElement(task);
       container.appendChild(taskElement);
-    }
+    });
   });
 }
