@@ -2,7 +2,7 @@
    Global & Root Variables
 ======================== */
 * {
-  box-sizing: border-box; /* Ensures padding and border are included in total element size */
+  box-sizing: border-box;
 }
 
 :root {
@@ -11,15 +11,15 @@
   --primary-font-color: #000000;
   --secondary-font-color: #828fa3;
   --primary-btn-color: #635fc7;
-  --sidebar-width: 300px; /* Sidebar fixed width */
+  --sidebar-width: 300px;
 }
 
 /* ================
    Dark Mode Variables
 ================ */
 body.dark-mode {
-  --primary-color: #2b2c37; /* Cards, Sidebar and Modal*/
-  --secondary-color: #20212c; /* Main background */
+  --primary-color: #2b2c37;
+  --secondary-color: #20212c;
   --primary-font-color: #ffffff;
   --secondary-font-color: #828fa3;
   --primary-btn-color: #635fc7;
@@ -30,13 +30,13 @@ body.dark-mode {
 ================ */
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
-  display: flex; /* Allow layout to span horizontally */
+  display: flex;
   flex-direction: row;
   width: 100%;
   min-height: 100vh;
   margin: 0;
   background-color: var(--secondary-color);
-  font-size: 1rem; /* Base font size for rem scaling */
+  font-size: 1rem;
 }
 
 body.dark-mode input,
@@ -57,18 +57,16 @@ body.dark-mode select {
   border-right: 1px solid #e4ebfa;
   width: var(--sidebar-width);
   height: 100vh;
-
-  transition: transform 0.5s ease;
 }
 
 #side-logo-div {
-  margin: 33px 113px 54px 34px; /* Spacing around logo */
+  margin: 33px 113px 54px 34px;
   display: flex;
   justify-content: flex-start;
 }
 
 #logo {
-  width: 100%; /* Make logo responsive within container */
+  width: 100%;
 }
 
 .boards-nav-links-div {
@@ -78,17 +76,13 @@ body.dark-mode select {
 }
 
 .sidebar-heading {
-  padding: 0 12px 0 50px; /* Aligns section content from left and right */
+  padding: 0 12px 0 50px;
 }
 
 h4 {
   color: var(--secondary-font-color);
   font-size: 0.75rem;
-  letter-spacing: 0.125rem; /* Makes heading more spaced */
-}
-
-.side-bar.hidden {
-  transform: translateX(-100%);
+  letter-spacing: 0.125rem;
 }
 
 .side-bar.hidden {
@@ -119,13 +113,11 @@ h4 {
   cursor: pointer;
 }
 
-/* Light mode */
 .hide-sidebar-btn {
   background-color: #f4f7fd;
   color: #000;
 }
 
-/* Dark mode */
 body.dark-mode .hide-sidebar-btn {
   background-color: #635fc7;
   color: #fff;
@@ -185,6 +177,15 @@ body.dark-mode .hide-sidebar-btn {
   margin-top: auto;
   padding: 20px;
   background-color: var(--secondary-color);
+
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+}
+
+body.dark-mode .theme-toggle-container {
+  background-color: #635fc7;
 }
 
 .theme-toggle {
@@ -199,7 +200,7 @@ body.dark-mode .hide-sidebar-btn {
 }
 
 body.dark-mode .theme-toggle {
-  background-color: #635fc7;
+  background-color: #20212c;
 }
 
 .toggle-circle {
@@ -221,7 +222,7 @@ body.dark-mode .toggle-circle {
    Main Layout
 ================ */
 #layout {
-  flex: 1; /* Fills remaining space beside sidebar */
+  flex: 1;
   overflow-x: hidden; /* Prevent horizontal scroll */
   width: 100%;
 }
@@ -264,11 +265,8 @@ header {
 
 .card-column-main {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    minmax(0, 304px)
-  ); /* 3 columns with min size */
-  gap: 8px; /* Space between columns */
+  grid-template-columns: repeat(3, minmax(0, 304px));
+  gap: 8px;
 }
 
 .column-div {
@@ -282,7 +280,7 @@ header {
 .column-head-div {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between dot and column title */
+  gap: 10px;
 }
 
 .columnHeader {
@@ -296,7 +294,7 @@ header {
 .dot {
   height: 15px;
   width: 15px;
-  border-radius: 50%; /* Make it circular */
+  border-radius: 50%;
   display: inline-block;
 }
 
@@ -351,7 +349,6 @@ h2 {
 /* ===============
    Modal Styles
 ================ */
-/* Remove default dialog styles */
 dialog {
   position: fixed;
 
@@ -398,10 +395,6 @@ dialog {
   line-height: 1;
   cursor: pointer;
   color: #ea5555;
-  transition:
-    transform 0.2s ease-in-out,
-    font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
 }
 
 .close-btn:focus {
@@ -431,7 +424,7 @@ form select {
 }
 
 form select {
-  appearance: none; /* Remove native arrow */
+  appearance: none;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
     no-repeat right 0.75rem center;
 
@@ -527,15 +520,15 @@ textarea {
    Responsive Styles
 ======================== */
 
-/******** Tablets ********/
+/******** Tablets and Smaller Devices ********/
 @media screen and (max-width: 1023px) {
   .side-bar {
-    display: none; /* Hide sidebar on tablets and smaller */
+    display: none;
   }
 
   .side-bar.show-sidebar {
     display: flex;
-    position: fixed; /* Overlay on top of page */
+    position: fixed;
     height: auto;
   }
 
@@ -564,7 +557,7 @@ textarea {
   .container {
     padding: 0;
     width: 100%;
-    align-items: center; /* Center columns on smaller screens */
+    align-items: center;
   }
 
   .card-column-main {
@@ -607,10 +600,7 @@ textarea {
 /******** Mobile ********/
 @media screen and (max-width: 576px) {
   .card-column-main {
-    grid-template-columns: minmax(
-      0,
-      380px
-    ); /* Stack columns in single column */
+    grid-template-columns: minmax(0, 380px);
   }
 
   .column-div {
@@ -642,13 +632,13 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
 
   display: none;
   justify-content: center;
   align-items: flex-start;
 
-  padding-top: 80px;
+  padding-top: 70px;
   z-index: 20;
 }
 
@@ -677,19 +667,26 @@ textarea {
 #mobile-menu-close {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 35px;
   color: #ea5555;
   cursor: pointer;
 }
 
 /* Fix board button spacing */
 .mobile-menu .board-btn {
-  width: 100%;
-  margin: 20px 0;
-  border-radius: 50px;
+  width: 90%;
+
+  border-radius: 0 100px 100px 0;
+
+  padding: 16px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin: 20px 0 25px -20px;
 }
 
-/* Theme container spacing */
 .mobile-menu .theme-toggle-container {
   border-radius: 8px;
 }
