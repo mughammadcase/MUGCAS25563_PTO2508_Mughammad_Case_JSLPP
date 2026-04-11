@@ -14,6 +14,9 @@ import { initThemeToggle } from "./ui/toggle-theme.js";
 import { initSidebarToggle } from "./ui/sidebarManager.js";
 import { updateTaskCounter } from "./ui/taskCounter.js";
 
+/**
+ * Displays loading message while fetching tasks from API, removes it after loading
+ */
 function showLoading() {
   const container = document.querySelector(".card-column-main");
 
@@ -26,17 +29,26 @@ function showLoading() {
   }
 }
 
+/**
+ * Removes the loading message element from the DOM after tasks are loaded
+ */
 function removeLoading() {
   const loadingEl = document.querySelector(".loading-msg");
   if (loadingEl) loadingEl.remove();
 }
 
+/**
+ * Displays error message if tasks fail to load
+ */
 function showError() {
-  alert("Fetching tasks failed. Please try again.");
+  alert("Failed to load tasks. Please refresh the page and try again.");
 }
 
 document.querySelector(".loading-msg")?.remove();
 
+/**
+ * Initialize the task board by loading tasks from localStorage or API, rendering them, and setting up event handlers
+ */
 async function initTaskBoard() {
   try {
     initThemeToggle();
@@ -57,7 +69,7 @@ async function initTaskBoard() {
 
     removeLoading();
 
-    // Event handlers
+    // Event handlers for modals and task interactions
     setupModalCloseHandler();
     setupNewTaskModalHandler();
     setupEditTaskHandler();

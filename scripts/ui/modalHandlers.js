@@ -5,12 +5,18 @@ import { deleteTask } from "../tasks/taskManager.js";
 
 let currentEditTaskId = null;
 
+/**
+ * Sets up the event listener for the modal close button
+ */
 export function setupModalCloseHandler() {
   const modal = document.getElementById("task-modal");
   const closeBtn = document.getElementById("close-modal-btn");
   closeBtn.addEventListener("click", () => modal.close());
 }
 
+/**
+ * Sets up the event listener for the "Add New Task" button to open the new task modal
+ */
 export function setupNewTaskModalHandler() {
   const overlay = document.querySelector(".modal-overlay");
   const newTaskBtn = document.getElementById("add-new-task-btn");
@@ -22,6 +28,7 @@ export function setupNewTaskModalHandler() {
     overlay.showModal();
   });
 
+  // Closes the modal when the cancel button is clicked
   cancelBtn.addEventListener("click", () => overlay.close());
 
   form.addEventListener("submit", (e) => {
@@ -34,6 +41,10 @@ export function setupNewTaskModalHandler() {
   });
 }
 
+/**
+ * Opens the task modal and populates it with the tasks details for editing
+ * @param {Object} task - The task object to be edited
+ */
 export function openTaskModal(task) {
   const modal = document.getElementById("task-modal");
 
@@ -48,6 +59,10 @@ export function openTaskModal(task) {
   modal.showModal();
 }
 
+/**
+ * Handles the form submission for editing a task
+ * @param {Event} e - The event object from the form submission
+ */
 function handleEditSubmit(e) {
   e.preventDefault(); // e meaning event object, prevents default form submit/page reload
 
@@ -71,12 +86,18 @@ function handleEditSubmit(e) {
   document.getElementById("task-modal").close();
 }
 
+/**
+ * Sets up the event listener for the edit task form submission
+ */
 export function setupEditTaskHandler() {
   const form = document.getElementById("task-form");
 
   form.addEventListener("submit", handleEditSubmit);
 }
 
+/**
+ * Handles the deletion of a task
+ */
 function handleDeleteTask() {
   if (currentEditTaskId === null) return;
 
@@ -91,6 +112,9 @@ function handleDeleteTask() {
   currentEditTaskId = null;
 }
 
+/**
+ * Sets up the event listener for the delete task button in the edit modal
+ */
 export function setupDeleteTaskHandler() {
   const deleteBtn = document.getElementById("delete-task-btn");
 

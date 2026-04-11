@@ -1,5 +1,10 @@
 import { openTaskModal } from "./modalHandlers.js";
 
+/**
+ * Creates a task element for the task board.
+ * @param {Object} task - The task object containing task details
+ * @returns {HTMLElement} - The created task element
+ */
 export function createTaskElement(task) {
   const taskDiv = document.createElement("div");
   taskDiv.className = "task-div";
@@ -26,6 +31,4 @@ export function createTaskElement(task) {
   taskDiv.addEventListener("click", () => {
     openTaskModal(task);
   });
-
-  return taskDiv;
 }

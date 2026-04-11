@@ -6,6 +6,14 @@ import { clearExistingTasks, renderTasks } from "../ui/render.js";
 import { resetForm } from "./formUtils.js";
 import { updateTaskCounter } from "../ui/taskCounter.js";
 
+/**
+ * Adds a new task then saved to localStorage, re-renders the task board, and resets the task form
+ * @param {string} title - The title of the new task
+ * @param {string} description - The description of the new task
+ * @param {string} status - The status of the new task
+ * @param {string} priority - The priority of the new task
+ * @returns {void}
+ */
 export function addNewTask() {
   const title = document.getElementById("title-input").value.trim();
   const description = document.getElementById("desc-input").value.trim();
@@ -36,6 +44,10 @@ export function addNewTask() {
   overlay.close();
 }
 
+/***
+ * Updates an existing task with new values, saves to localStorage, and re-renders the task board
+ * @param {Object} updatedTask - The task object with updated values
+ */
 export function updateTask(updatedTask) {
   const tasks = loadTasksFromStorage();
 
@@ -50,6 +62,10 @@ export function updateTask(updatedTask) {
   updateTaskCounter(updatedTasks);
 }
 
+/**
+ * Deletes a task by its ID, saves the updated task list to localStorage, and re-renders the task board
+ * @param {number} taskId - The ID of the task to delete
+ */
 export function deleteTask(taskId) {
   const tasks = loadTasksFromStorage();
 

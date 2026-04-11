@@ -1,3 +1,6 @@
+/**
+ * Initializes the sidebar toggle functionality for both desktop and mobile views
+ */
 export function initSidebarToggle() {
   const sidebar = document.getElementById("side-bar-div");
   const hideBtn = document.getElementById("hide-sidebar-btn");

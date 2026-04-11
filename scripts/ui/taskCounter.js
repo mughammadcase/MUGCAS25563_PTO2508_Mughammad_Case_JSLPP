@@ -1,3 +1,7 @@
+/**
+ * Updates the task counters for each status (TODO, DOING, DONE)
+ * @param {Array<Object>} tasks - The array of task objects to be counted
+ */
 export function updateTaskCounter(tasks) {
   const counts = {
     todo: 0,

@@ -3,6 +3,8 @@ import { sortTasksByPriority } from "./prioritySorter.js";
 
 /**
  * Finds the task container element based on task status.
+ * @param {string} status - The status of the task (todo, doing, done)
+ * @returns {HTMLElement|null} - The task container element or null if not found
  */
 function getTaskContainerByStatus(status) {
   const column = document.querySelector(`.column-div[data-status="${status}"]`);
@@ -10,7 +12,7 @@ function getTaskContainerByStatus(status) {
 }
 
 /**
- * Clears all existing task-divs from all task containers.
+ * Clears all existing tasks from the task board by emptying the innerHTML of task containers.
  */
 export function clearExistingTasks() {
   document.querySelectorAll(".tasks-container").forEach((container) => {
@@ -19,7 +21,8 @@ export function clearExistingTasks() {
 }
 
 /**
- * Renders tasks to their appropriate columns.
+ * Renders the given array of taks onto the task board, grouping by status and sorting by priority
+ * @param {Array<Object>} tasks - The array of task objects to be rendered
  */
 export function renderTasks(tasks) {
   const groupedTasks = {
@@ -28,14 +31,14 @@ export function renderTasks(tasks) {
     done: [],
   };
 
-  // Group tasks by status
+  // Group tasks by their status
   tasks.forEach((task) => {
     if (groupedTasks[task.status]) {
       groupedTasks[task.status].push(task);
     }
   });
 
-  // Sort each group by priority and render
+  // Goes through each status group, finds the corresponding container, sorts tasks by priority, and append it to the DOM
   Object.keys(groupedTasks).forEach((status) => {
     const container = getTaskContainerByStatus(status);
 
