@@ -77,16 +77,18 @@ Tasks are grouped into three columns: Todo, Doing, and Done. Column counters upd
 
 ## Project Structure
 
+```
 ├── scripts/
-│ ├── api/ # API fetching and data handling logic
-│ ├── tasks/ # Task creation, modification, and management logic
-│ ├── ui/ # DOM rendering, modal interactions, and interface updates
-│ ├── utils/ # Utility functions, including local storage operations
-│ └── main.js # Application initialization and module orchestration
-├── index.html # Primary HTML document
-├── styles.css # Application styling and theme definitions
+│   ├── api/       # API fetching and data handling logic
+│   ├── tasks/     # Task creation, modification, and management logic
+│   ├── ui/        # DOM rendering, modal interactions, and interface updates
+│   ├── utils/     # Utility functions, including local storage operations
+│   └── main.js    # Application initialization and module orchestration
+├── index.html     # Primary HTML document
+├── styles.css     # Application styling and theme definitions
 ├── PROJECT-BRIEF.md # Original project requirements and specifications
-└── README.md # Application documentation
+└── README.md      # Application documentation
+```
 
 ---
 
