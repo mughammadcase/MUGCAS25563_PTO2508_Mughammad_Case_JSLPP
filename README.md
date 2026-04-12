@@ -14,7 +14,7 @@ This project demonstrates dynamic data fetching, localStorage persistence, modul
 
 ## Project Presentation
 
-[Placeholder for video link]
+([Video Recorded Presentation](https://www.loom.com/share/83d4ba0df94f4d50a409a84866faf990))
 
 ---
 
